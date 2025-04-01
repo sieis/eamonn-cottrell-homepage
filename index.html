@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eamonn Cottrell | Spreadsheets, Automation & Personal Growth</title>
+    <meta name="description" content="Eamonn Cottrell helps you automate and scale your business with spreadsheet tutorials, productivity tips, and personal development insights.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <style>
+        /* Base styles */
+        :root {
+            --green-primary: #219c5e;
+            --green-light: #2ecc71;
+            --green-dark: #1a7a49;
+            --green-gradient: linear-gradient(135deg, #219c5e 0%, #1a7a49 100%);
+            --red-primary: #E63946;
+            --red-light: #f87171;
+            --red-dark: #C1272D;
+            --red-gradient: linear-gradient(135deg, #E63946 0%, #C1272D 100%);
+            --blue-primary: #1D3557;
+            --blue-dark: #0F1A2B;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            --white: #FFFFFF;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--gray-800);
+            line-height: 1.6;
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--gray-900);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            letter-spacing: -0.025em;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            letter-spacing: -0.025em;
+        }
+
+        h3 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--gray-700);
+        }
+
+        .section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--green-gradient);
+            border-radius: 2px;
+        }
+
+        .title-wrapper {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .subtitle {
+            font-size: 1.125rem;
+            color: var(--gray-600);
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--green-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--gray-900);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--gray-700);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--green-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--green-primary);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--gray-800);
+            cursor: pointer;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.875rem 1.75rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary {
+            background: var(--green-gradient);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--green-dark);
+            z-index: -1;
+            transition: transform 0.3s ease;
+            transform: scaleX(0);
+            transform-origin: right;
+        }
+
+        .btn-primary:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .btn-secondary {
+            background: var(--red-gradient);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-secondary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--red-dark);
+            z-index: -1;
+            transition: transform 0.3s ease;
+            transform: scaleX(0);
+            transform-origin: right;
+        }
+
+        .btn-secondary:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--green-primary);
+            border: 2px solid var(--green-primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--green-primary);
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 8rem 0 6rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--green-gradient);
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4rem;
+        }
+
+        .hero-text {
+            flex: 1;
+            color: var(--white);
+        }
+
+        .hero-text h1 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .profile-image-container {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 8px solid rgba(255, 255, 255, 0.2);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .profile-image-container:hover .profile-image {
+            transform: scale(1.05);
+        }
+
+        .blob {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+            animation: blob-animation 8s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes blob-animation {
+            0% { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; }
+            25% { border-radius: 45% 55% 65% 35% / 50% 60% 40% 50%; }
+            50% { border-radius: 50% 50% 55% 45% / 55% 45% 55% 45%; }
+            75% { border-radius: 55% 45% 45% 55% / 45% 50% 50% 55%; }
+            100% { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; }
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            background-color: var(--gray-50);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background-color: rgba(33, 156, 94, 0.05);
+            border-radius: 50%;
+            transform: translate(50%, -50%);
+            z-index: 0;
+        }
+
+        .newsletter-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(230, 57, 70, 0.05);
+            border-radius: 50%;
+            transform: translate(-50%, 50%);
+            z-index: 0;
+        }
+
+        .newsletter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 4rem;
+        }
+
+        .newsletter-card {
+            background-color: var(--white);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .newsletter-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .newsletter-header {
+            padding: 2rem;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .newsletter-header.green {
+            background: var(--green-gradient);
+        }
+
+        .newsletter-header.red {
+            background: var(--red-gradient);
+        }
+
+        .newsletter-icon {
+            width: 4rem;
+            height: 4rem;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            flex-shrink: 0;
+        }
+
+        .newsletter-content {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .newsletter-content p {
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 1.5rem 0 2rem;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            color: var(--gray-700);
+        }
+
+        .feature-list li i {
+            color: var(--green-primary);
+            margin-right: 0.75rem;
+            margin-top: 0.25rem;
+            font-size: 1.125rem;
+        }
+
+        .btn-green {
+            background: var(--green-gradient);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            align-self: flex-start;
+            margin-top: auto;
+        }
+
+        .btn-green::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--green-dark);
+            z-index: -1;
+            transition: transform 0.3s ease;
+            transform: scaleX(0);
+            transform-origin: right;
+        }
+
+        .btn-green:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .btn-red {
+            background: var(--red-gradient);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            align-self: flex-start;
+            margin-top: auto;
+        }
+
+        .btn-red::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--red-dark);
+            z-index: -1;
+            transition: transform 0.3s ease;
+            transform: scaleX(0);
+            transform-origin: right;
+        }
+
+        .btn-red:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Article Grid */
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--gray-700);
+        }
+
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .article-card {
+            background-color: var(--white);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .article-card:hover .article-image {
+            transform: scale(1.05);
+        }
+
+        .article-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .article-excerpt {
+            color: var(--gray-600);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            color: var(--gray-500);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-meta i {
+            margin-right: 0.5rem;
+        }
+
+        .article-meta span {
+            margin-right: 1rem;
+        }
+
+        .article-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background-color: var(--gray-100);
+            color: var(--gray-700);
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-right: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-tag.green {
+            background-color: rgba(33, 156, 94, 0.1);
+            color: var(--green-primary);
+        }
+
+        .article-tag.red {
+            background-color: rgba(230, 57, 70, 0.1);
+            color: var(--red-primary);
+        }
+
+        .article-tag.blue {
+            background-color: rgba(29, 53, 87, 0.1);
+            color: var(--blue-primary);
+        }
+
+        /* YouTube Section */
+        .youtube-section {
+            background-color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .youtube-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(33, 156, 94, 0.03) 0%, transparent 200px),
+                radial-gradient(circle at 80% 70%, rgba(230, 57, 70, 0.03) 0%, transparent 200px);
+            z-index: 0;
+        }
+
+        .featured-video {
+            background-color: var(--white);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .video-info {
+            padding: 2rem;
+        }
+
+        .video-info h3 {
+            margin-bottom: 1rem;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .video-item {
+            background-color: var(--white);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .video-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* About Section */
+        .about-section {
+            background-color: var(--gray-50);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 80% 20%, rgba(33, 156, 94, 0.03) 0%, transparent 200px),
+                radial-gradient(circle at 20% 80%, rgba(230, 57, 70, 0.03) 0%, transparent 200px);
+            z-index: 0;
+        }
+
+        .about-content {
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .running-image-container {
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+
+        .running-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .running-image-container:hover .running-image {
+            transform: scale(1.05);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text h2::after {
+            left: 0;
+            transform: none;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .skills-grid h3 {
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            color: var(--gray-700);
+        }
+
+        .skill-list li i {
+            color: var(--green-primary);
+            margin-right: 0.75rem;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--gray-900);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(33, 156, 94, 0.1) 0%, transparent 100px),
+                radial-gradient(circle at 80% 20%, rgba(230, 57, 70, 0.1) 0%, transparent 100px);
+            z-index: 0;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            color: var(--white);
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo span {
+            color: var(--green-primary);
+        }
+
+        .footer a {
+            text-decoration: none;
+        }
+
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-icon {
+            color: var(--white);
+            font-size: 1.5rem;
+            width: 3rem;
+            height: 3rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: var(--white);
+            background-color: var(--green-primary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            font-size: 0.875rem;
+            opacity: 0.8;
+            text-align: center;
+        }
+
+        /* Utilities */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-auto {
+            margin-top: auto;
+        }
+
+        /* Media Queries */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .about-content {
+                flex-direction: column;
+                gap: 3rem;
+            }
+
+            .about-text h2 {
+                text-align: center;
+            }
+
+            .about-text h2::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 4rem 0;
+            }
+
+            .profile-image-container {
+                width: 280px;
+                height: 280px;
+            }
+
+            .blob {
+                width: 320px;
+                height: 320px;
+            }
+
+            .newsletter-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 6rem 0 4rem;
+            }
+
+            .profile-image-container {
+                width: 240px;
+                height: 240px;
+            }
+
+            .blob {
+                width: 280px;
+                height: 280px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+            }
+
+            .newsletter-card {
+                min-height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="#" class="logo">Eamonn<span>Cottrell</span></a>
+            <ul class="nav-links">
+                <li><a href="#newsletters" class="nav-link">Newsletters</a></li>
+                <li><a href="#youtube" class="nav-link">YouTube</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+            </ul>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Hi, I'm Eamonn</h1>
+                    <p>I help you automate, grow and scale your business—one tool at a time.</p>
+                    <div class="hero-buttons">
+                        <a href="#newsletters" class="btn btn-primary">My Newsletters</a>
+                        <a href="#youtube" class="btn btn-secondary">YouTube Channel</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="blob"></div>
+                    <div class="profile-image-container">
+                        <img src="/assets/eamonn-profile.jpg" alt="Eamonn Cottrell" class="profile-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Newsletter Section -->
+    <section id="newsletters" class="section newsletter-section">
+        <div class="container">
+            <div class="title-wrapper">
+                <h2 class="section-title">My Newsletters</h2>
+                <p class="subtitle">Subscribe to my newsletters for regular insights, tutorials, and personal growth tips.</p>
+            </div>
+            
+            <div class="newsletter-grid">
+                <!-- Got Sheet Newsletter -->
+                <div class="newsletter-card">
+                    <div class="newsletter-header green">
+                        <div class="newsletter-icon">
+                            <i class="fas fa-table"></i>
+                        </div>
+                        <h3>Got Sheet</h3>
+                    </div>
+                    <div class="newsletter-content">
+                        <p>Automate and Scale Your Business - One Tool at a Time. Got Sheet helps you automate and scale your business with spreadsheet tutorials, productivity tips, and AI tools.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> Google Sheets & Excel tutorials</li>
+                            <li><i class="fas fa-check-circle"></i> Automation techniques</li>
+                            <li><i class="fas fa-check-circle"></i> Productivity tools & AI integration</li>
+                        </ul>
+                        <a href="https://www.gotsheet.xyz/subscribe" target="_blank" class="btn btn-green">Subscribe to Got Sheet</a>
+                    </div>
+                </div>
+
+                <!-- Progress and Perfection Newsletter -->
+                <div class="newsletter-card">
+                    <div class="newsletter-header red">
+                        <div class="newsletter-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Progress & Perfection</h3>
+                    </div>
+                    <div class="newsletter-content">
+                        <p>Faith & Recovery - One Day at a Time. Progress and Perfection helps Christians find strength and hope by delivering recovery-themed, scripture-backed reflections every morning.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> Daily meditations</li>
+                            <li><i class="fas fa-check-circle"></i> Faith & recovery insights</li>
+                            <li><i class="fas fa-check-circle"></i> Personal growth reflections</li>
+                        </ul>
+                        <a href="https://progressandperfection.com/subscribe" target="_blank" class="btn btn-red">Subscribe to Progress & Perfection</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Articles Section -->
+            <div class="title-wrapper">
+                <h3 class="section-subtitle">Featured Articles</h3>
+            </div>
+            
+            <div class="article-grid">
+                <!-- Article 1 -->
+                <div class="article-card">
+                    <img src="/assets/finance-tracker-2025.jpg" alt="Spreadsheet Automation" class="article-image">
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <i class="far fa-calendar"></i>
+                            <span>Feb 19, 2025</span>
+                            <i class="far fa-clock"></i>
+                            <span>5 min read</span>
+                        </div>
+                        <span class="article-tag green">Spreadsheets</span>
+                        <h3 class="article-title">Stop Using Complicated Finance Apps</h3>
+                        <p class="article-excerpt">Forget the fancy dashboards - this barebones spreadsheet changed my financial life...</p>
+                        <a target="_blank" href="https://www.gotsheet.xyz/p/the-simple-spreadsheet-that-killed-my-credit-card-debt" class="btn btn-green">Read Article</a>
+                    </div>
+                </div>
+                
+                <!-- Article 2 -->
+                <div class="article-card">
+                    <img src="/assets/vibe coding.jpg" alt="Productivity Tips" class="article-image">
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <i class="far fa-calendar"></i>
+                            <span>March 26, 2025</span>
+                            <i class="far fa-clock"></i>
+                            <span>7 min read</span>
+                        </div>
+                        <span class="article-tag green">AI</span>
+                        <h3 class="article-title">The Vibe Coding Shift</h3>
+                        <p class="article-excerpt">How AI is changing software engineering forever, and what it means for you and me.</p>
+                        <a target="_blank" href="https://www.gotsheet.xyz/p/the-vibe-coding-shift" class="btn btn-green">Read Article</a>
+                    </div>
+                </div>
+                
+                <!-- Article 3 -->
+                <div class="article-card">
+                    <img src="/assets/ravenous.jpg" alt="Personal Growth" class="article-image">
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <i class="far fa-calendar"></i>
+                            <span>April 2, 2025</span>
+                            <i class="far fa-clock"></i>
+                            <span>4 min read</span>
+                        </div>
+                        <span class="article-tag red">Recovery</span>
+                        <h3 class="article-title">Ravenous</h3>
+                        <p class="article-excerpt">If you’re not desperate yet, you’re not paying attention.</p>
+                        <a target="_blank" href="https://www.progressandperfection.com/p/ravenous-spiritual-hunger-christian-recovery" class="btn btn-red">Read Article</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- YouTube Section -->
+    <section id="youtube" class="section youtube-section">
+        <div class="container">
+            <div class="title-wrapper">
+                <h2 class="section-title">YouTube Channel</h2>
+                <p class="subtitle">Learn practical skills through my tutorials and guides on automation, spreadsheets, and productivity.</p>
+            </div>
+            
+            <div class="featured-video">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/Ad4ST73Cn9Y" title="Featured YouTube Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <h3>Automation, Growth and Software Tools</h3>
+                    <p>Learn how to automate tasks, create powerful spreadsheets, and boost your productivity with practical tutorials and tips.</p>
+                    <a href="https://www.youtube.com/@eamonncottrell" target="_blank" class="btn btn-red">Subscribe on YouTube</a>
+                </div>
+            </div>
+
+            <div class="video-grid">
+                <div class="video-item">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/5xgwvokDhT0" title="YouTube Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/FxxPq2wXcK4" title="YouTube Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/Hx1Uepq3lLI" title="YouTube Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="running-image-container">
+                        <img src="/assets/eamonn-about.jpg" alt="Eamonn Cottrell running" class="running-image">
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h2 class="section-title">About Me</h2>
+                    <p>Father of four, husband to an incredible rockstar, and dedicated creator—I thrive on bringing ideas to life. My unique blend of business administration and engineering backgrounds has equipped me with both analytical thinking and creative problem-solving skills.</p>
+                    <p>I love helping people reclaim their time through automations and discover personal growth through faith and recovery principles. When I'm not crafting solutions or spending time with family, you'll find me running ultramarathons.</p>
+                    
+                    <div class="skills-grid">
+                        <div>
+                            <h3>Skills</h3>
+                            <ul class="skill-list">
+                                <li><i class="fas fa-check"></i> HTML/CSS/JavaScript</li>
+                                <li><i class="fas fa-check"></i> Google Sheets & Excel</li>
+                                <li><i class="fas fa-check"></i> Content Creation</li>
+                                <li><i class="fas fa-check"></i> Podcast Production</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>Experience</h3>
+                            <ul class="skill-list">
+                                <li><i class="fas fa-check"></i> Operations Officer</li>
+                                <li><i class="fas fa-check"></i> Small Business Analyst</li>
+                                <li><i class="fas fa-check"></i> Website Developer</li>
+                                <li><i class="fas fa-check"></i> Technology Writer</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <a href="https://gotsheet.xyz/subscribe" target="_blank" class="btn btn-green">Subscribe for free</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Eamonn<span>Cottrell</span></div>
+                <div class="social-icons">
+                    <a href="https://www.youtube.com/@eamonncottrell" target="_blank" class="social-icon">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/eamonncottrell/" target="_blank" class="social-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://twitter.com/EamonnCottrell" target="_blank" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://github.com/sieis" target="_blank" class="social-icon">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+                <p class="copyright">&copy; 2025 Eamonn Cottrell. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mobile menu toggle (basic implementation)
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.padding = '1rem';
+                navLinks.style.backgroundColor = 'white';
+                navLinks.style.boxShadow = 'var(--shadow)';
+            }
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.padding = '0.5rem 0';
+                navbar.style.boxShadow = 'var(--shadow-md)';
+            } else {
+                navbar.style.padding = '1rem 0';
+                navbar.style.boxShadow = 'var(--shadow)';
+            }
+        });
+    </script>
+</body>
+</html>
