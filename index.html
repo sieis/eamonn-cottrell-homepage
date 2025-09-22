@@ -873,19 +873,18 @@
             border: 1px solid var(--gray-100);
             display: flex;
             flex-direction: column;
-            height: 100%; /* allow grid align-items:stretch to expand it */
+            /* height: 100%; allow grid align-items:stretch to expand it */
         }
 
         .form-embed .iframe-wrap {
             position: relative;
             width: 100%;
-            min-height: 640px; /* increased so embed fills card */
-            height: 100%;
+            /* height: 100%; */
         }
 
         .form-embed iframe {
             width: 100%;
-            height: 100%;
+            /* height: 100%; */
             border: 0;
             display: block;
         }
@@ -1306,7 +1305,7 @@
             </div>
 
             <!-- <div class="contact-grid"> -->
-                <div class="contact-card">
+                <!-- <div class="contact-card">
                     <h3>Get in touch</h3>
                     <p>If you'd like to collaborate, ask a question, or request a speaking engagement, please reach out. I read every message and try to respond within a few days.</p>
                     <ul class="feature-list">
@@ -1315,15 +1314,13 @@
                         <li><i class="fas fa-check-circle"></i> Media & press</li>
                     </ul>
                     <p class="subtitle">You can reach me at <a href="mailto:eamonncottrell@gmail.com">eamonncottrell@gmail.com</a>.</p>
+                </div> -->
+                <div class="contact-card">
+                    <!-- <div class="iframe-wrap"> -->
+                        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd3NAaC9H2H9yN0qOFrs4RTFJM0bGA0YXugDR5E-5DZVILKQQ/viewform?embedded=true" width="100%" height="500px" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                    <!-- </div> -->
                 </div>
-
-                <!-- <div class="form-embed">
-                    <div class="iframe-wrap"> -->
-                        <!-- Embedded Google Form: responsive wrapper prevents layout overflow and removes inner scrollbars when possible -->
-                        <!-- <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd3NAaC9H2H9yN0qOFrs4RTFJM0bGA0YXugDR5E-5DZVILKQQ/viewform?embedded=true" loading="lazy" title="Contact form" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-                    </div> -->
-                <!-- </div> -->
-            </div>
+            <!-- </div> -->
         </div>
     </section>
     <footer class="footer">
