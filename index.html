@@ -837,6 +837,59 @@
             margin-right: 0.75rem;
         }
 
+        /* Contact Section */
+        .contact-section {
+            background-color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 520px;
+            gap: 2.5rem;
+            align-items: stretch; /* make both columns same height */
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-card {
+            background-color: var(--gray-50);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive embed wrapper to maintain aspect ratio and avoid scrollbars */
+        .form-embed {
+            background-color: var(--white);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-100);
+            display: flex;
+            flex-direction: column;
+            height: 100%; /* allow grid align-items:stretch to expand it */
+        }
+
+        .form-embed .iframe-wrap {
+            position: relative;
+            width: 100%;
+            min-height: 640px; /* increased so embed fills card */
+            height: 100%;
+        }
+
+        .form-embed iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+
         /* Footer */
         .footer {
             background-color: var(--gray-900);
@@ -1244,6 +1297,35 @@
     </section>
 
     <!-- Footer -->
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="title-wrapper">
+                <h2 class="section-title">Contact</h2>
+                <p class="subtitle">Have a question, project, or idea? Fill out this quick form and I'll get back to you.</p>
+            </div>
+
+            <!-- <div class="contact-grid"> -->
+                <div class="contact-card">
+                    <h3>Get in touch</h3>
+                    <p>If you'd like to collaborate, ask a question, or request a speaking engagement, please reach out. I read every message and try to respond within a few days.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Collaboration & consulting</li>
+                        <li><i class="fas fa-check-circle"></i> Speaking requests</li>
+                        <li><i class="fas fa-check-circle"></i> Media & press</li>
+                    </ul>
+                    <p class="subtitle">You can reach me at <a href="mailto:eamonncottrell@gmail.com">eamonncottrell@gmail.com</a>.</p>
+                </div>
+
+                <!-- <div class="form-embed">
+                    <div class="iframe-wrap"> -->
+                        <!-- Embedded Google Form: responsive wrapper prevents layout overflow and removes inner scrollbars when possible -->
+                        <!-- <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd3NAaC9H2H9yN0qOFrs4RTFJM0bGA0YXugDR5E-5DZVILKQQ/viewform?embedded=true" loading="lazy" title="Contact form" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                    </div> -->
+                <!-- </div> -->
+            </div>
+        </div>
+    </section>
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
