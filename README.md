@@ -1,5 +1,5 @@
 # eamonn-cottrell-homepage
-My updated home page in 2025
+My personal homepage — a single static `index.html`, no build step.
 
 ## Deployed on Netlify
 
