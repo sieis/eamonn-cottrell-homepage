@@ -298,6 +298,38 @@
 
         .more-link { display: inline-block; margin-top: 1.5rem; }
 
+        .subgroup-label { display: block; margin-top: 3rem; }
+
+        .post-link.no-date .post-sub { padding-left: 0; }
+
+        /* Products */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .product-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .product-card .price {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--text-muted);
+        }
+
+        .product-card p { font-size: 0.9375rem; color: var(--text-secondary); }
+        .product-card .text-link { margin-top: auto; font-size: 0.9375rem; }
+
         /* YouTube */
         .video-feature {
             display: grid;
@@ -488,6 +520,7 @@
                     <li><a href="#newsletters">Newsletters</a></li>
                     <li><a href="#writing">Writing</a></li>
                     <li><a href="#youtube">YouTube</a></li>
+                    <li><a href="#products">Products</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -499,9 +532,9 @@
         <!-- Hero -->
         <section class="hero">
             <div class="container">
-                <img src="/assets/eamonn-profile.jpg" alt="Eamonn Cottrell" class="hero-photo" width="1080" height="1080" fetchpriority="high" decoding="async">
+                <img src="/assets/eamonn-profile.jpg" alt="Eamonn Cottrell" class="hero-photo" width="800" height="800" fetchpriority="high" decoding="async">
                 <h1>AI strategy and automation for normal people and modern businesses.</h1>
-                <p class="lede">I&rsquo;m Eamonn Cottrell. I write newsletters and make videos about Claude, practical automation, and building useful tools&mdash;without a big team or a big budget.</p>
+                <p class="lede">I&rsquo;m Eamonn Cottrell. I teach businesses how to use AI and automation tools.</p>
                 <div class="hero-actions">
                     <a href="https://www.gotsheet.xyz/subscribe" target="_blank" rel="noopener" class="btn btn-primary">Read the newsletter</a>
                     <a href="https://www.youtube.com/@eamonncottrell" target="_blank" rel="noopener" class="text-link">Watch on YouTube &rarr;</a>
@@ -514,8 +547,8 @@
             <div class="container">
                 <div class="section-header">
                     <span class="eyebrow">Newsletters</span>
-                    <h2>Two newsletters, two lanes</h2>
-                    <p>One for your work, one for your soul. Both free.</p>
+                    <h2>Two live newsletters</h2>
+                    <p>Both free. Unsubscribe anytime.</p>
                 </div>
                 <div class="newsletter-grid">
                     <article class="newsletter-card">
@@ -580,6 +613,28 @@
                         </li>
                     </ul>
                     <a class="text-link more-link" href="https://www.gotsheet.xyz" target="_blank" rel="noopener">All posts &rarr;</a>
+
+                    <span class="eyebrow subgroup-label">From Progress &amp; Perfection</span>
+                    <ul class="post-list">
+                        <li>
+                            <a class="post-link no-date" href="https://www.progressandperfection.com/p/what-is-progress-and-perfection" target="_blank" rel="noopener">
+                                <span class="post-title">What is Progress and Perfection?</span>
+                                <span class="post-sub">The why behind the daily newsletter&mdash;faith and recovery, one day at a time.</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="post-link no-date" href="https://www.progressandperfection.com/p/pretty-hate-machine" target="_blank" rel="noopener">
+                                <span class="post-title">Pretty Hate Machine</span>
+                                <span class="post-sub">A sample daily reflection.</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="post-link no-date" href="https://www.progressandperfection.com/book" target="_blank" rel="noopener">
+                                <span class="post-title">The Progress &amp; Perfection Book</span>
+                                <span class="post-sub">A year of reflections, collected in paperback and Kindle.</span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -635,6 +690,43 @@
                         </button>
                         <figcaption>Un-sharing hundreds of Google Drive files with one script</figcaption>
                     </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products -->
+        <section id="products" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="eyebrow">Products</span>
+                    <h2>Tools &amp; resources</h2>
+                    <p>Things I&rsquo;ve built to help you go further, faster.</p>
+                </div>
+                <div class="product-grid">
+                    <article class="product-card">
+                        <span class="price">$125</span>
+                        <h3>Consulting Call with Eamonn</h3>
+                        <p>Need something automated or an AI strategy for your business? Book a call and let&rsquo;s work through it together.</p>
+                        <a class="text-link" href="https://www.gotsheet.xyz/products/consulting-call-with-eamonn" target="_blank" rel="noopener">Book a call &rarr;</a>
+                    </article>
+                    <article class="product-card">
+                        <span class="price">$9</span>
+                        <h3>Claude Automation Kit</h3>
+                        <p>41 ready-to-use Claude skills covering operations, marketing, finance, customer service, and internal tooling.</p>
+                        <a class="text-link" href="https://www.gotsheet.xyz/products/claude-automation-kit" target="_blank" rel="noopener">Get the kit &rarr;</a>
+                    </article>
+                    <article class="product-card">
+                        <span class="price">$15</span>
+                        <h3>Personal Finance Tracker</h3>
+                        <p>The simple budgeting system my wife and I have used for 15+ years.</p>
+                        <a class="text-link" href="https://www.gotsheet.xyz/products/personal-finance-tracker" target="_blank" rel="noopener">Get the tracker &rarr;</a>
+                    </article>
+                    <article class="product-card">
+                        <span class="price">Paperback &amp; Kindle</span>
+                        <h3>Progress and Perfection</h3>
+                        <p>365 biblical reflections on addiction and recovery, drawn from 22+ years of continuous recovery.</p>
+                        <a class="text-link" href="https://amzlink.to/az09dXr0ZI3pD" target="_blank" rel="noopener">Buy on Amazon &rarr;</a>
+                    </article>
                 </div>
             </div>
         </section>
